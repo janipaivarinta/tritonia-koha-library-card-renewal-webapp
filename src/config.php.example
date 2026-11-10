@@ -1,0 +1,16 @@
+<?php
+return [
+'mode' => 'demo', // Change to 'production' only after integration testing
+'koha_base_url' => 'https://koha.example.org',
+'koha_client_id' => '',
+'koha_client_secret' => '',
+'koha_token_path' => '/api/v1/oauth/token',
+'koha_password_path' => '/api/v1/auth/password/validation',
+'koha_patron_path' => '/api/v1/patrons/%d',
+// Explicitly select a validated renewal method; generic PATCH is disabled by default.
+'renewal_method' => '', // 'patch_expiry_date' after validation on your Koha
+'sender_email' => 'noreply@example.org',
+'max_expiry_years_from_today' => 10,
+'otp_ttl_seconds' => 900,
+'session_ttl_seconds' => 900,
+];
