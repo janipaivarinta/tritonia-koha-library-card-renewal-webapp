@@ -4,7 +4,7 @@ PHP 8.2+ application for Koha 26.05, with Finnish, Swedish and English UI, light
 
 ## Install under existing Apache website (no dedicated port)
 
-Copy the **contents** of this directory to the website document root subfolder, for example `/var/www/html/applikaatio-kansio/` (adjust for your existing VirtualHost DocumentRoot). The entry point is now directly `index.php` in that folder, so visit `https://www.tritonia.fi/applikaatio-kansio/index.php`. Apache must have PHP-FPM configured and serve `.php` files. No separate `php -S` process or port 8088 is required.
+Copy the **contents** of this directory to the website document root subfolder, for example `/var/www/html/app-folder/` (adjust for your existing VirtualHost DocumentRoot). The entry point is now directly `index.php` in that folder, so visit `https://www.tritonia.fi/app-folder/index.php`. Apache must have PHP-FPM configured and serve `.php` files. No separate `php -S` process or port 8088 is required.
 
 **Security:** This package includes Apache `.htaccess` deny rules for `src/` and `storage/`, but they only work if `AllowOverride` permits them. **Prefer moving `src/` and `storage/` outside the public DocumentRoot and updating `require` and storage paths**, or configure explicit `<Directory>` denies in the VirtualHost. Verify `https://.../src/config.php` and `https://.../storage/` cannot be accessed before deployment. Never expose API secrets. Ensure `storage/` is writable by the PHP service account, not publicly accessible. Production must use HTTPS.
 
@@ -41,3 +41,11 @@ Version 4 reformats PHP, JavaScript, CSS and the mixed PHP/HTML entry point for 
 ### v4.1: Five-year demo renewal fix
 
 The maximum expiry date was previously limited to five years from today, which prevented a five-year extension when the card already had remaining validity. The configurable limit is now **10 years from today**, allowing the 1-, 2-, and 5-year demo options to work with the supplied demo account. This limit also applies to production if enabled: review it against library policy before deployment. Production Koha renewal integration is not yet validated.
+
+## License
+
+This project is licensed under the MIT License.
+
+Copyright (c) 2026 Jani Päivärinta
+
+See the [LICENSE](LICENSE) file for details.
