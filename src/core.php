@@ -113,16 +113,60 @@ function allowedDate(string $date): bool
 function renewKoha(int $id,string $date): void
 {
     if(cfg()['mode']==='demo')return;
-    if(cfg()['renewal_method']!=='patch_expiry_date')throw new RuntimeException('Renewal integration not enabled');
+
+    if(cfg()['renewal_method']!=='put_expiry_date')
+        throw new RuntimeException('Renewal integration not enabled');
+
     $tok=token();
-    [$s]=requestKoha('PATCH',sprintf(cfg()['koha_patron_path'],$id),['expiry_date'=>$date],$tok);
-    if(!in_array($s,[200,204],true))throw new RuntimeException('Koha renewal failed');
+    $path=sprintf(cfg()['koha_patron_path'],$id);
+
+    // Read the current patron record.
+    [$s,$patron]=requestKoha('GET',$path,null,$tok);
+
+    if($s!==200||!is_array($patron))
+        throw new RuntimeException('Koha patron lookup failed');
+
+    // Required fields for the Koha PUT request.
+    foreach(['surname','library_id','category_id'] as $field)
+    {
+        if(!isset($patron[$field])||!is_string($patron[$field])||$patron[$field]==='')
+            throw new RuntimeException('Missing Koha patron field: '.$field);
+    }
+
+    // Update only the expiry date while preserving required fields.
+    $payload=[
+        'surname'=>$patron['surname'],
+        'library_id'=>$patron['library_id'],
+        'category_id'=>$patron['category_id'],
+        'expiry_date'=>$date
+    ];
+
+    [$s]=requestKoha('PUT',$path,$payload,$tok);
+
+    if(!in_array($s,[200,204],true))
+        throw new RuntimeException('Koha renewal failed');
+
+    // Verify that Koha actually saved the new expiry date.
+    [$s,$updated]=requestKoha('GET',$path,null,$tok);
+
+    if($s!==200||($updated['expiry_date']??null)!==$date)
+        throw new RuntimeException('Koha renewal verification failed');
 }
 function sendCode(string $email,string $code): bool
 {
     if(cfg()['mode']==='demo')return true;
     if(!filter_var($email,FILTER_VALIDATE_EMAIL))return false;
-    return mail($email,'Tritonia verification code','Your verification code: '.$code.'\nExpires in 15 minutes.','From: '.cfg()['sender_email'].'\r\nContent-Type: text/plain; charset=UTF-8');
+
+    $subject='Tritonia verification code';
+    $message="Your verification code: ".$code."\nExpires in 15 minutes.";
+
+    $headers=[
+	'From: Tritonia - Loans <'.cfg()['sender_email'].'>',
+        'Content-Type: text/plain; charset=UTF-8'
+    ];
+
+    return mail($email,$subject,$message,implode("\r\n",$headers),'-f '.escapeshellarg('no-reply-tritonia@uwasa.fi')
+);
 }
 function otpCreate(): bool
 {
