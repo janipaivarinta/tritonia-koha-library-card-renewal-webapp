@@ -137,6 +137,27 @@ Version 1.0 documents the implemented Koha and email integrations and the existi
 4. Verify date calculations and renewal limits.
 5. Complete a security review and controlled acceptance test.
 
+## Production Validation
+
+**Version:** 1.0.0  
+**Validation date:** 13 November 2026  
+**Environment:** AlmaLinux 9, Apache HTTP Server, PHP-FPM, Koha REST API
+
+The application was successfully tested in its production environment on 13 November 2026.
+
+The following functionality was verified through an end-to-end library card renewal:
+
+- Patron authentication using a library card number and PIN.
+- Email delivery of the one-time password (OTP).
+- Successful OTP verification.
+- Completion of the library card renewal process.
+- Updating the patron's expiration date through the Koha REST API.
+- Independent confirmation of the updated expiration date in Koha.
+
+**Result:** All tested functions completed successfully. The application's core library card renewal workflow was verified in the production environment.
+
+This validation confirms the tested workflow but does not constitute a comprehensive security audit or performance assessment.
+
 ## AI transparency
 
 See [AI-TRANSPARENCY.md](AI-TRANSPARENCY.md) for information about AI-assisted development and documentation.
