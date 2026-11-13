@@ -33,12 +33,12 @@ No separate PHP development server or dedicated TCP listener is needed.
 Deploy the application within an existing Apache VirtualHost, for example:
 
 ```text
-/var/www/html/uusiminen-fornyelse-renewal/
+/var/www/html/webapp-folder/
 ```
 
 The entry point is `index.php`. Ensure PHP-FPM is enabled and Apache processes the included `.htaccess` rules. The application must be served over HTTPS.
 
-On the current AlmaLinux deployment, `storage/` is owned by `apache:apache`. Protect `src/config.php` and its backups from HTTP access and Git tracking. Never publish production credentials.
+Protect configuration files and credentials from unauthorized access and version control.
 
 ## Configuration
 
@@ -58,19 +58,19 @@ Configure `src/config.php` for the deployment. Relevant settings include:
 | `otp_ttl_seconds` | OTP validity in seconds |
 | `session_ttl_seconds` | Session validity in seconds |
 
-The currently configured integration settings are:
+Example configuration (replace placeholders with deployment-specific values):
 
 ```php
-'mode' => 'production',
-'koha_base_url' => 'https://app1.tritonia.koha.csc.fi',
+'mode' => 'demo',
+'koha_base_url' => 'https://koha.example.org',
 'renewal_method' => 'put_expiry_date',
-'sender_email' => 'loans@uwasa.fi',
+'sender_email' => 'library@example.org',
 'max_expiry_years_from_today' => 10,
 'otp_ttl_seconds' => 900,
 'session_ttl_seconds' => 900,
 ```
 
-These settings do not mean that the complete application workflow has been approved for public deployment.
+Do not publish live endpoints, credentials, or environment-specific mail settings.
 
 ## Koha REST API integration
 
@@ -89,10 +89,6 @@ The `PUT` method is used because `PATCH` was not supported in the tested environ
 ## Email and OTP
 
 The application sends a six-digit verification code to the patron's email address. The OTP is valid for 15 minutes and allows a maximum of five incorrect attempts.
-
-The visible sender is configured as `Tritonia - Loans <loans@uwasa.fi>`. The technical envelope sender may differ.
-
-The current Sendmail relay is `mailgw.uwasa.fi` on TCP port 25. TLS 1.3 and acceptance by the university SMTP gateway have been verified. SMTP gateway acceptance does not, by itself, confirm delivery to the recipient's mailbox.
 
 ## Demo mode
 
@@ -131,13 +127,17 @@ The bundled `assets/img/logo.svg` is used in both light and dark modes.
 
 ## Release status — v1.0
 
-Version 1.0 documents the implemented Koha and SMTP integrations and the existing multilingual renewal interface. The following acceptance checks remain before public release:
+Version 1.0 documents the implemented Koha and email integrations and the existing multilingual renewal interface. The following acceptance checks remain before public release:
 
 1. Test the complete browser workflow with an authorized Koha test patron.
 2. Verify OTP delivery and confirmation.
 3. Confirm renewal eligibility and library policy enforcement.
 4. Verify date calculations and renewal limits.
 5. Complete a security review and controlled acceptance test.
+
+## AI transparency
+
+See [AI-TRANSPARENCY.md](AI-TRANSPARENCY.md) for information about AI-assisted development and documentation.
 
 ## License
 
