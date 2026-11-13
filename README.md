@@ -1,4 +1,6 @@
-# Tritonia Koha Library Card Renewal — v1.0
+# Tritonia Koha Library Card Renewal Webapp
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24195095.svg)](https://doi.org/10.5281/zenodo.24195095)
 
 A PHP 8.2+ web application for renewing Tritonia library cards through the Koha 26.05 REST API.
 
@@ -146,6 +148,14 @@ The Tritonia name and logo (`assets/img/logo.svg`) are the property of Tritonia 
 The Tritonia logo is included solely for identification and branding purposes and is **not covered by the MIT License**.
 
 No permission is granted to reproduce, modify, redistribute, or otherwise use the Tritonia name or logo independently of the application without authorization from the respective rights holders.
+
+## Citation
+
+If you use this software in research, teaching, or other projects, please cite:
+
+Päivärinta, J. (2026). *Tritonia Koha Library Card Renewal Webapp* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24195095
+
+**DOI:** [10.5281/zenodo.24195095](https://doi.org/10.5281/zenodo.24195095)
 
 ## License
 

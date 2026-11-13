@@ -1,0 +1,36 @@
+
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata in this file."
+
+type: software
+title: "Tritonia Koha Library Card Renewal Webapp"
+abstract: >-
+  A PHP-based web application for renewing library cards
+  through the Koha Library Management System REST API,
+  featuring patron authentication and email-based
+  one-time password (OTP) verification.
+
+authors:
+  - family-names: "Päivärinta"
+    given-names: "Jani"
+    affiliation: "University of Vaasa"
+    orcid: "https://orcid.org/0000-0003-3395-4110"
+
+version: "1.0.0"
+date-released: "2026-11-13"
+
+doi: "10.5281/zenodo.24195095"
+url: "https://github.com/janipaivarinta/tritonia-koha-library-card-renewal-webapp"
+repository-code: "https://github.com/janipaivarinta/tritonia-koha-library-card-renewal-webapp"
+
+license: "MIT"
+
+keywords:
+  - Koha
+  - Library Management System
+  - Library Card Renewal
+  - PHP
+  - REST API
+  - OAuth 2.0
+  - One-Time Password
+  - Library Services
