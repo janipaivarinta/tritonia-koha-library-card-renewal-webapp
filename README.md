@@ -139,10 +139,20 @@ Version 1.0 documents the implemented Koha and email integrations and the existi
 
 See [AI-TRANSPARENCY.md](AI-TRANSPARENCY.md) for information about AI-assisted development and documentation.
 
+## Trademark and Branding
+
+The Tritonia name and logo (`assets/img/logo.svg`) are the property of Tritonia and/or their respective rights holders.
+
+The Tritonia logo is included solely for identification and branding purposes and is **not covered by the MIT License**.
+
+No permission is granted to reproduce, modify, redistribute, or otherwise use the Tritonia name or logo independently of the application without authorization from the respective rights holders.
+
 ## License
 
-This project is licensed under the MIT License.
+The source code of this project is licensed under the MIT License.
 
 Copyright (c) 2026 Jani Päivärinta
 
 See the [LICENSE](LICENSE) file for details.
+
+The MIT License does not apply to third-party trademarks, logos, or other materials identified as excluded from the license. See [Trademark and Branding](#trademark-and-branding).

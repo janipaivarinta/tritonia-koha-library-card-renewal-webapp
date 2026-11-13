@@ -16,10 +16,6 @@ Selected Koha REST API operations and email submission have been tested individu
 
 AI assistance does not replace code review, security assessment, testing, or applicable institutional approval processes.
 
-## Sensitive information
-
-This repository's public documentation intentionally omits deployment-specific hostnames, mail relay details, credentials, and other operational information. Secrets must not be committed to version control.
-
 ## Attribution
 
 Project copyright and licensing remain as stated in the [LICENSE](LICENSE) file. Use of AI assistance does not imply endorsement by OpenAI.
