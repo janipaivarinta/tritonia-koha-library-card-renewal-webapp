@@ -9,10 +9,10 @@
   </tr>
   <tr>
     <td>
-      <img src="assets/img/tritonia-koha-library-card-renewal-light.png" alt="QR Studio Light Mode" width="100%">
+      <img src="assets/img/tritonia-koha-library-card-renewal-light.png" alt="Light Mode" width="100%">
     </td>
     <td>
-      <img src="assets/img/tritonia-koha-library-card-renewal-dark.png" alt="QR Studio Dark Mode" width="100%">
+      <img src="assets/img/tritonia-koha-library-card-renewal-dark.png" alt="Dark Mode" width="100%">
     </td>
   </tr>
 </table>
