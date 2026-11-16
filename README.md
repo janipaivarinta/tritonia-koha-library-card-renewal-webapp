@@ -2,6 +2,21 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24195095.svg)](https://doi.org/10.5281/zenodo.24195095)
 
+<table>
+  <tr>
+    <td width="50%" align="center"><strong>Light Mode</strong></td>
+    <td width="50%" align="center"><strong>Dark Mode</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/img/tritonia-koha-library-card-renewal-light.png" alt="QR Studio Light Mode" width="100%">
+    </td>
+    <td>
+      <img src="assets/img/tritonia-koha-library-card-renewal-dark.png" alt="QR Studio Dark Mode" width="100%">
+    </td>
+  </tr>
+</table>
+
 A PHP 8.2+ web application for renewing Tritonia library cards through the Koha 26.05 REST API.
 
 The application provides a Finnish, Swedish, and English interface, light and dark themes, library card and PIN authentication, email-based one-time password (OTP) verification, and 1-, 2-, and 5-year renewal options.
